@@ -24,17 +24,17 @@ public class Rede {
     public boolean inserir(Pessoa pessoa) {
         if (redeList.isEmpty()) {
             redeList.add(pessoa);
-            matrizAdjacencia[1][0] = 1;
+            matrizAdjacencia[0][0] = 1;
             pessoa.setId(1);
             redeList.add(pessoa);
             qtdPessoas++;
         } else {
             if (qtdPessoas < 50) {
                 if (buscarPessoa(pessoa.getNome()) != null) {
-                    for (int i = 0; i < idList.length; i++) {
+                    for (int i = 1; i < idList.length; i++) {
                         if (idList[i] == 0) {
                             matrizAdjacencia[i][0] = 1;
-                            pessoa.setId(i);
+                            pessoa.setId(i+1);
                             redeList.add(pessoa);
                             return true;
                         }
