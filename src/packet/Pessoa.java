@@ -42,11 +42,22 @@ public class Pessoa {
     public void addAmigos(Pessoa amigos) {
         this.amigos.add(amigos);
     }
-    
-    public String listarAmigos(){
+
+    public int buscarAmigo(Pessoa amigo) {
+        int qtdNo= 0;
+        for (int i = 0; i < amigos.size(); i++) {
+            qtdNo++;
+            if (amigos.get(i).getNome().equals(amigo.getNome())) {
+                return qtdNo;
+            }
+        }
+        return 0;
+    }
+
+    public String listarAmigos() {
         String saida = "";
-        for(int i = 0; i < amigos.size(); i++){
-            saida += " "+amigos.get(i).getNome();
+        for (int i = 0; i < amigos.size(); i++) {
+            saida += " " + amigos.get(i).getNome();
         }
         return saida;
     }

@@ -11,6 +11,8 @@ public class Principal {
 
         boolean loop = true;
         do {
+            System.out.println(" ");
+            System.out.println("-------------------");
             System.out.println("Escolha a opção 1 a 5 ");
             System.out.println("1 - Adicionar");
             System.out.println("2 - Remover");
@@ -18,7 +20,10 @@ public class Principal {
             System.out.println("4 - Listar amigos");
             System.out.println("5 - distancia de nos (incompleto)");
             System.out.println("6 - Status da rede");
+            System.out.println("7 - listar matriz de adj");
             System.out.println("0 - exit");
+            System.out.println("----------------------");
+            System.out.println(" ");
             int opcao = entradaInt.nextInt();
 
             switch (opcao) {
@@ -53,10 +58,21 @@ public class Principal {
                     System.out.println(resultBusca);
                     break;
                 case 5:
-                    rede.noDistancia();
+                    System.out.println("Distancia de Nos entre pessoas");
+                    System.out.println("Pessoa A");
+                    String pessoa1 = entradaString.nextLine();
+                    System.out.println("Pessoa B");
+                    String pessoa2 = entradaString.nextLine();
+                    if (rede.noDistancia(pessoa1, pessoa2) != 0) {
+                        System.out.println(" a quantidade de nos de distancia é = " + rede.noDistancia(pessoa1, pessoa2));
+                    } else {
+                        System.out.println("essas duas pessoas não são amigas");
+                    }
                     break;
+
                 case 6:
                     //--------status da rede-----------
+                    System.out.println(" ");
                     System.out.println("Status da rede");
                     //qtd de usuarios cadastrados
                     System.out.println("Quantidade de usuários");
@@ -68,11 +84,26 @@ public class Principal {
                     System.out.println("quais pessoas estao conectadas");
                     rede.listarConexoes();
                     //somatoria do peso das arestas
+                    System.out.println("somatoria do peso das arestas");
+                    rede.qtdArestas();
+
+                    //listar todos os usuarios
+                    System.out.println("listar todos os usuarios");
+                    System.out.println(rede.listarUsuarios());
+
+                    break;
+                case 7:
+                    //listar matriz de adj
+                    System.out.println("matriz de adj");
+                    System.out.println("___________");
+                    System.out.println(rede.listarMatriz());
+                    System.out.println("               ");
                     break;
                 default:
                     loop = false;
                     break;
             }
+
         } while (loop);
     }
 }
