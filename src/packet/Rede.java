@@ -59,8 +59,9 @@ public class Rede {
         if (a != null && b != null) {
             No no = new No(a, b);
             Conexao conect = new Conexao(no, tempo);
-            
             conexoes.add(conect);
+            matrizAdjacencia[b.getId()][a.getId()] = 1;
+            matrizAdjacencia[a.getId()][b.getId()] = 1;
             return true;
         } else {
             return false;
