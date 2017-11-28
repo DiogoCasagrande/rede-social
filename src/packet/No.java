@@ -7,6 +7,8 @@ public class No {
     private Pessoa ant;
     private Pessoa prox;
     
+    
+    
     public No(Pessoa ant, Pessoa prox){
         this.ant = ant;
         this.prox = prox;

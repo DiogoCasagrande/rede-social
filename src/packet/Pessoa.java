@@ -7,7 +7,7 @@ public class Pessoa {
     private int id;
     private String nome;
     private int idade;
-    private ArrayList<Conexao> amigos;
+    private ArrayList<Pessoa> amigos = new ArrayList<Pessoa>();
 
     public Pessoa(String nome, int idade) {
         this.nome = nome;
@@ -37,5 +37,17 @@ public class Pessoa {
 
     public void setIdade(int idade) {
         this.idade = idade;
+    }
+
+    public void addAmigos(Pessoa amigos) {
+        this.amigos.add(amigos);
+    }
+    
+    public String listarAmigos(){
+        String saida = "";
+        for(int i = 0; i < amigos.size(); i++){
+            saida += " "+amigos.get(i).getNome();
+        }
+        return saida;
     }
 }

@@ -17,8 +17,8 @@ public class Rede {
     private int[][] matrizAdjacencia = new int[50][50];
     private int[] idList = new int[50];
     private int qtdPessoas;
-    
-    private ArrayList<No> listNos = new ArrayList<No>();
+
+    private ArrayList<Conexao> conexoes = new ArrayList<Conexao>();
 
     public boolean inserir(Pessoa pessoa) {
         if (redeList.isEmpty()) {
@@ -53,21 +53,39 @@ public class Rede {
         return true;
     }
 
-    public void conectarPessoas(String nomeA, String nomeB) {
-
-        No no = new No(buscarPessoa(nomeA),buscarPessoa(nomeB));
+    public boolean conectarPessoas(String nomeA, String nomeB, int tempo) {
+        Pessoa a = buscarPessoa(nomeA);
+        Pessoa b = buscarPessoa(nomeB);
+        if (a != null && b != null) {
+            No no = new No(a, b);
+            Conexao conect = new Conexao(no, tempo);
+            
+            conexoes.add(conect);
+            return true;
+        } else {
+            return false;
+        }
     }
 
-    public void verificarAmigos() {
+    public String verificarAmigos(String nome) {
+        return buscarPessoa(nome).listarAmigos();
     }
 
     public void noDistancia() {
     }
 
-    public void qtdUsuarios() {
+    public int qtdUsuarios() {
+        return qtdPessoas;
     }
 
     public void listarConexoes() {
+        for(int i = 0; i < conexoes.size();i++){
+            System.out.print("Pessoa: "+conexoes.get(i).getPessoaAnt());
+            
+            System.out.print(" > conectada ");
+            
+            System.out.println("Pessoa: "+conexoes.get(i).getPessoaAnt());
+        }
     }
 
     public int numeroVertices() {

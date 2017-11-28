@@ -10,12 +10,15 @@ package packet;
  * @author Home
  */
 public class Conexao {
-    
+
     No no;
     private int tempo;
     private static int qtdConexoes;
-    
-    public Conexao(Pessoa amigo, int tempo){
+
+    public Conexao(No no, int tempo) {
+        this.no = no;
+        this.tempo = tempo;
+        no.getAnt().addAmigos(no.getProx());
         qtdConexoes++;
     }
 
@@ -26,8 +29,18 @@ public class Conexao {
     public void setTempo(int tempo) {
         this.tempo = tempo;
     }
-    
-    static int getQtdConexoes(){
+
+    public String getPessoaAnt() {
+
+        return no.getAnt().getNome();
+    }
+
+    public String getPessoaProx() {
+        return no.getProx().getNome();
+    }
+
+    static int getQtdConexoes() {
         return qtdConexoes;
     }
+
 }
